@@ -20,10 +20,20 @@ function createDivs(resolution) {
 
 const container = document.querySelector('.container');
 
-createDivs(16);
+const btn = document.querySelector('#input-squares');
+
+createDivs(64);
 
 function addColorDiv(e) {
   if (e.target.className !== 'container') e.target.style.backgroundColor = 'black';
 
 }
+
+function askCanvasResolution(e) {
+  const canvasResolution = parseInt(prompt('Input the canvas resolution, the maximum value is 100: '));
+  if (typeof (canvasResolution) === 'number' && canvasResolution <= 100) createDivs(canvasResolution);
+  else alert('The input must be a number below 100')
+}
+
+btn.addEventListener('click', askCanvasResolution)
 container.addEventListener('mouseover', addColorDiv);
